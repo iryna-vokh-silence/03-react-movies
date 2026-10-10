@@ -10,6 +10,7 @@ interface MovieModalProps {
 }
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/original";
+const PLACEHOLDER = "/no-image.svg";
 
 export default function MovieModal({ movie, onClose }: MovieModalProps) {
   useEffect(() => {
@@ -50,7 +51,11 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
           &times;
         </button>
         <img
-          src={`${IMAGE_URL}${movie.backdrop_path}`}
+          src={
+            movie.backdrop_path
+              ? `${IMAGE_URL}${movie.backdrop_path}`
+              : PLACEHOLDER
+          }
           alt={movie.title}
           className={css.image}
         />

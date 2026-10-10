@@ -7,6 +7,7 @@ interface MovieGridProps {
 }
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+const PLACEHOLDER = "/no-image.svg";
 
 export default function MovieGrid({ movies, onSelect }: MovieGridProps) {
   return (
@@ -16,7 +17,11 @@ export default function MovieGrid({ movies, onSelect }: MovieGridProps) {
           <div className={css.card}>
             <img
               className={css.image}
-              src={`${IMAGE_URL}${movie.poster_path}`}
+              src={
+                movie.poster_path
+                  ? `${IMAGE_URL}${movie.poster_path}`
+                  : PLACEHOLDER
+              }
               alt={movie.title}
               loading="lazy"
             />
